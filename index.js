@@ -4,7 +4,8 @@ function HandleSubmit(ev) {
     ev.preventDefault()
     const f = ev.target
     const name = f.personName.value
-    document.querySelector('h1').textContent = name;
+    const age = f.age.value
+    document.querySelector('h1').textContent = name + ' ' + age;
 }
 
 personForm.addEventListener('submit', HandleSubmit)
