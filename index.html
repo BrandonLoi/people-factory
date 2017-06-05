@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
   <head>
+    <link rel="stylesheet" type="text/css" href="index.css">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>People Factory</title>
@@ -16,16 +17,21 @@
           <p>
             <label for="personName">Name</label>
             <input type="text" name="personName">
-          </p
+          </p>
           <p>
             <label for="age"></label>
             Enter your age: <input type="number" name="age" min='1' max='100'><br>
-          </p>
           <p>
             <button type="submit">Go</button>
           </p>
-
+          <p id ='blank'></p>
         </form>
+          <form id="size">
+            <p id="sizeChange">
+              Change the font size of this.
+            </p>
+            <button type="submit">Increase Size</button>
+          </form>
       </div>
     </section>
     <script src="index.js"></script>

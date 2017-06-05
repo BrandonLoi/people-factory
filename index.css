@@ -1,0 +1,10 @@
+h1 {
+    color: red;
+}
+h1:hover {
+    color: purple;
+}
+#blank {
+    background-color: lightblue;
+    font-size: 100%;
+}
