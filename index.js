@@ -17,13 +17,25 @@ function HandleSubmit(ev) {
   // const em = document.createElement('em')
   // em.textContent = name;
   // details.appendChild(em
-  details.innerHTML = `
-    <ul>
-      <li>${name}</li>
-      <li>${colorDiv}</li>
-      <li>${age}</li>
-    </ul>
-  `
+  // details.innerHTML = `
+  //   <ul>
+  //     <li>${name}</li>
+  //     <li>${colorDiv}</li>
+  //     <li>${age}</li>
+  //   </ul>
+  // `
+  const ul = document.createElement('ul')
+  const li1 = document.createElement('li')
+  li1.textContent = `Name: ${name}`
+  const li2 = document.createElement('li')
+  li2.textContent = `Color: ${favoriteColor}`
+  const li3 = document.createElement('li')
+  li3.textContent = `Age: ${age}`
+
+  details.appendChild(ul)
+  details.appendChild(li1)
+  details.appendChild(li2)
+  details.appendChild(li3)
 }
 
 function fontSize(ev) {
