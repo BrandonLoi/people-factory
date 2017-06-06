@@ -10,7 +10,10 @@ function HandleSubmit(ev) {
   const details = document.querySelector('#details')
   //document.querySelector('h1').textContent = name + ' ' + age
   document.getElementById('blank').textContent += name + '-' + age + ' \n'
-  details.innerHTML = `<em>${name}</em>`;
+  //details.innerHTML = `<em>${name}</em>`;
+  const em = document.createElement('em')
+  em.textContent = name;
+  details.appendChild(em);
 }
 
 function fontSize(ev) {
