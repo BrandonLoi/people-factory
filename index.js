@@ -6,14 +6,22 @@ function HandleSubmit(ev) {
   ev.preventDefault()
   const f = ev.target
   const name = f.personName.value
-  const age = f.age.value
   const details = document.querySelector('#details')
+  const favoriteColor = f.favoriteColor.value;
+  const age = f.age.value
   //document.querySelector('h1').textContent = name + ' ' + age
-  document.getElementById('blank').textContent += name + '-' + age + ' \n'
+  //document.getElementById('blank').textContent += name + '-' + age + ' \n'
   //details.innerHTML = `<em>${name}</em>`;
-  const em = document.createElement('em')
-  em.textContent = name;
-  details.appendChild(em);
+  // const em = document.createElement('em')
+  // em.textContent = name;
+  // details.appendChild(em
+  details.innerHTML = `
+  <ul>
+    <li>${name}</li>
+    <li>${favoriteColor}</li>
+    <li>${age}</li>
+  </ul>
+  `
 }
 
 function fontSize(ev) {
