@@ -1,48 +1,53 @@
-const personForm = document.querySelector('form#personForm')
-const size = document.querySelector('form#size')
+const PeopleFactory = {
+  theForm: document.querySelector('form#personForm'),
+  size: document.querySelector('form#size'),
 
-function HandleSubmit(ev) {
-  ev.preventDefault()
-  const f = ev.target
-  const details = document.querySelector('#details')
+  init: function(formSelector) {
+    const theForm = document.querySelector(formSelector)
+    this.theForm.addEventListener('submit', this.HandleSubmit.bind(this))
+    size.addEventListener('submit', this.fontSize)
+  },
 
-  const person = {
-    name: f.personName.value,
-    color: renderColor(f.favoriteColor.value).outerHTML,
-    age: f.age.value,
-  }
+  HandleSubmit: function(ev) {
+    ev.preventDefault()
+    const f = ev.target
+    const details = document.querySelector('#details')
 
-  details.appendChild(renderList(person))
+    const person = {
+      name: f.personName.value,
+      color: this.renderColor(f.favoriteColor.value).outerHTML,
+      age: f.age.value,
+    }
+    details.appendChild(this.renderList(person))
+  },
+
+  fontSize: function(ev) {
+    ev.preventDefault()
+    document.getElementById('sizeChange').style.fontSize = "20px"
+  },
+
+  renderListItem: function(fieldName, value) {
+    const li = document.createElement('li')
+    li.innerHTML = `${fieldName}: ${value}`
+    return li
+  },
+  renderList: function(personData) {
+    const ul = document.createElement('ul')
+    //[name, favcolor, age]
+    Object.keys(personData).map((fieldName) => {
+      const li = this.renderListItem(fieldName, personData[fieldName])
+      ul.appendChild(li)
+    })
+    return ul
+  },
+
+  renderColor: function(color) {
+    const colorDiv = document.createElement('div')
+    colorDiv.style.backgroundColor = color
+    colorDiv.style.width = '100px'
+    colorDiv.style.height = '50px'
+    return colorDiv
+  },
 }
 
-function fontSize(ev) {
-  ev.preventDefault()
-  document.getElementById('sizeChange').style.fontSize = "20px"
-}
-
-function renderListItem(fieldName, value) {
-  const li = document.createElement('li')
-  li.innerHTML = `${fieldName}: ${value}`
-  return li
-}
-function renderList(personData) {
-  const ul = document.createElement('ul')
-  //[name, favcolor, age]
-  Object.keys(personData).map(function(fieldName) {
-    const li = renderListItem(fieldName, personData[fieldName])
-    ul.appendChild(li)
-  })
-  return ul
-}
-
-function renderColor(color) {
-  const colorDiv = document.createElement('div')
-  colorDiv.style.backgroundColor = color
-  colorDiv.style.width = '100px'
-  colorDiv.style.height = '50px'
-  return colorDiv
-}
-
-
-personForm.addEventListener('submit', HandleSubmit)
-size.addEventListener('submit', fontSize)
+PeopleFactory.init('form#personForm')
